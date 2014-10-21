@@ -1,0 +1,25 @@
+{
+  "authors": [
+    {
+      "name": "jiv_e",
+      "email": "juho.viitasalo@lildrop.com",
+      "homepage": "http://lildrop.com",
+      "role": "Developer"
+    }
+  ],
+  "require-dev": {
+    "phpunit/phpunit": ">=3.5"
+  },
+  "require": {
+    "anahkiasen/underscore-php" : "dev-master"
+  },
+
+  "autoload": {
+    "psr-4": {
+      "MarkupTranslator\\": "src/MarkupTranslator/",
+      "Tests\\": "tests/"
+    }
+  }
+
+
+}

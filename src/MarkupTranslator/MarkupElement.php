@@ -38,6 +38,10 @@ class MarkupElement {
   protected function sanitize($string) {
     $escapeTable = array(
       '*' => '\*',
+      '[' => '\[',
+      ']' => '\]',
+      '(' => '\(',
+      ')' => '\)',
     );
 
     return strtr($string, $escapeTable);

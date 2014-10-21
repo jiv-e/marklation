@@ -48,13 +48,16 @@ class MarkupTranslator implements MarkupTranslatorInterface {
     foreach ($this->getDictionary()->getOrderedElements() as $element) {
       $sourcePattern = '/';
       $targetPattern = '';
+      preg_match_all('/\$\d/', $element->getSource(), $sourceArgs);
+      preg_match_all('/\$\d/', $element->getTarget(), $targetArgs);
+      //TODO Raise error if source args are not in numerical order!
       $sourceParts = preg_split('/\$\d/', $element->getSource());
       $targetParts = preg_split('/\$\d/', $element->getTarget());
-      if(count($sourceParts) == count($targetParts) > 1 && count($sourceParts) % 2 == 0) {
+      if(count($sourceParts) == count($targetParts) > 1) {
         $argNum = count($sourceParts) - 1;
         for ($i = 0; $i < $argNum; $i++) {
           $sourcePattern .= $sourceParts[$i].'(.*?)';
-          $targetPattern .= $targetParts[$i].'$'.($i+1);
+          $targetPattern .= $targetParts[$i].$targetArgs[0][$i];
         }
         $sourcePattern .= $sourceParts[$i].'/';
         $targetPattern .= $targetParts[$i];

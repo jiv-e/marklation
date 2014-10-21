@@ -2,10 +2,8 @@
   {"id": "em" ,           "source": "_$1_",     "target": "<em>$1</em>" },
   {"id": "strong",        "source": "__$1__",   "target": "<strong>$1</strong>",                "extends": "em" },
   {"id": "percent" ,      "source": "%$1%",     "target": "<percent>$1</percent>" },
-  {"id": "star" ,         "source": "*$1*",     "target": "<star>$1</star>" },
   {"id": "doublepercent", "source": "%%$1%%",   "target": "<percents>$1</percents>",            "extends": "percent"},
-  {"id": "percentsStar",  "source": "%%*$1%%*", "target": "<percents-star>$1</percents-star>",  "extends": "doublepercent"},
-  {"id": "stardash",      "source": "-%$1%-",   "target": "<percent-dash>$1</percent-dash>",    "extends": "percent"},
-  {"id": "link",          "source": "[$1]($2 \"$3\")",   "target": "<a href=\"$2\" title=\"$3\">$1</a>"}
+  {"id": "link",          "source": "[$1]($2)",   "target": "<a href=\"$2\">$1</a>"},
+  {"id": "linkWithTitle", "source": "[$1]($2 \"$3\")",   "target": "<a href=\"$2\" title=\"$3\">$1</a>", "extends": "link"}
 ]
 }

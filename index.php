@@ -11,4 +11,6 @@ $translator = new MarkupTranslator();
 $translator->setDictionary($dictionary);
 
 print $translator->translate($argv[1])."\n";
+//print $moro = \MarkupTranslator\MarkupUtilities::encodeEscapes('moo \_ \k \. \^\!\(joo')."\n";
+//print \MarkupTranslator\MarkupUtilities::decodeEscapes($moro)."\n";
 ?>

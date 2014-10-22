@@ -44,7 +44,7 @@ class MarkupTranslator implements MarkupTranslatorInterface {
   }
 
   protected function replaceSingleSurrounds($text) {
-    $parsedText = $text;
+    $parsedText = MarkupUtilities::encodeEscapes($text);
     //Element order ensures that extended elements are rendered first
     foreach ($this->getDictionary()->getOrderedElements() as $element) {
       $sourcePattern = '/';
@@ -67,10 +67,10 @@ class MarkupTranslator implements MarkupTranslatorInterface {
         $sourcePattern .= $sourceParts[$i].'/';
         $targetPattern .= $targetParts[$i];
         $parsedText = preg_replace($sourcePattern, $targetPattern, $parsedText);
-
       }
     }
 
+    $parsedText = MarkupUtilities::decodeEscapes($parsedText);
     return $parsedText;
   }
 

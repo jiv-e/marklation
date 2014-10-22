@@ -28,23 +28,11 @@ class MarkupElement {
 
   function __construct($id, $source, $target, $extends = NULL) {
     $this->id = $id;
-    $this->source = $this->sanitize($source);
+    $this->source = MarkupUtilities::sanitize($source);
     $this->target = $target;
     $this->extends = $extends;
 
     $this->extendedBy = new MarkupElementCollection();
-  }
-
-  protected function sanitize($string) {
-    $escapeTable = array(
-      '*' => '\*',
-      '[' => '\[',
-      ']' => '\]',
-      '(' => '\(',
-      ')' => '\)',
-    );
-
-    return strtr($string, $escapeTable);
   }
 
   /**

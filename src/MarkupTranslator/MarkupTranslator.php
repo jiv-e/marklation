@@ -37,6 +37,7 @@ class MarkupTranslator implements MarkupTranslatorInterface {
   }
 
   public function translate($text) {
+    //TODO Implement this: http://php.net/manual/en/function.htmlspecialchars.php
     $translation = $this->replaceSingleSurrounds($text);
 
     return $translation;
@@ -52,11 +53,14 @@ class MarkupTranslator implements MarkupTranslatorInterface {
       preg_match_all('/\$\d/', $element->getTarget(), $targetArgs);
       //TODO Raise error if source args are not in numerical order!
       $sourceParts = preg_split('/\$\d/', $element->getSource());
+      $startChar = $this->getFirstCharOfPart($sourceParts[0]);
       $targetParts = preg_split('/\$\d/', $element->getTarget());
       if(count($sourceParts) == count($targetParts) > 1) {
         $argNum = count($sourceParts) - 1;
         for ($i = 0; $i < $argNum; $i++) {
-          $sourcePattern .= $sourceParts[$i].'(.*?)';
+          //Start of the source pattern is not allowed inside the pattern
+          //TODO Document this!
+          $sourcePattern .= $sourceParts[$i].'([^'.$startChar.']*?)';
           $targetPattern .= $targetParts[$i].$targetArgs[0][$i];
         }
         $sourcePattern .= $sourceParts[$i].'/';
@@ -64,15 +68,6 @@ class MarkupTranslator implements MarkupTranslatorInterface {
         $parsedText = preg_replace($sourcePattern, $targetPattern, $parsedText);
 
       }
-      /*for ($i = 0; $i < $argNum; ++$i) {
-        preg_match('/(^$\d]*?)\$'.$i.'([^$\d]*?)/', $element->getSource(), $source_matches);
-        preg_match('/([^$\d]*?)\$'.$i.'([^$\d]*?)/', $element->getTarget(), $target_matches);
-        if($source_matches && $target_matches) {
-          $parsedText = preg_replace('/'.$source_matches[1].'(.*?)'.$source_matches[2].'/', $target_matches[1].'$1'.$target_matches[2], $parsedText);
-        }
-      }*/
-
-
     }
 
     return $parsedText;
@@ -80,6 +75,20 @@ class MarkupTranslator implements MarkupTranslatorInterface {
 
   protected function countArguments($string) {
     return preg_match_all('/\$\d/', $string);
+  }
+
+  /**
+   * Gets the first character from regex part that is not an escape '\' or whitespace.
+   *
+   * @param string $part
+   * @return string
+   */
+  protected function getFirstCharOfPart($part) {
+    $part = ltrim($part);
+    if(($firstChar = substr($part, 0, 1)) == '\\') {
+      return '\\'.$this->getFirstCharOfPart(substr($part, 1));
+    }
+    return $firstChar;
   }
 
 }

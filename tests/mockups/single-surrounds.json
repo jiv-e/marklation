@@ -4,6 +4,8 @@
   {"id": "percent" ,      "source": "%$1%",     "target": "<percent>$1</percent>" },
   {"id": "doublepercent", "source": "%%$1%%",   "target": "<percents>$1</percents>",            "extends": "percent"},
   {"id": "link",          "source": "[$1]($2)",   "target": "<a href=\"$2\">$1</a>"},
-  {"id": "linkWithTitle", "source": "[$1]($2 \"$3\")",   "target": "<a href=\"$2\" title=\"$3\">$1</a>", "extends": "link"}
+  {"id": "linkWithTitle", "source": "[$1]($2 \"$3\")",   "target": "<a href=\"$2\" title=\"$3\">$1</a>", "extends": "link"},
+  {"id": "image", "source": "![$1]($2)",   "target": "<img src=\"$2\" alt=\"$1\"/>", "extends": "link"},
+  {"id": "imageWithTitle", "source": "![$1]($2 \"$3\")",   "target": "<img src=\"$2\" alt=\"$1\" title=\"$3\"/>", "extends": "linkWithTitle"}
 ]
 }

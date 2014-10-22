@@ -51,6 +51,7 @@ class MarkupTranslator implements MarkupTranslatorInterface {
       $targetPattern = '';
       preg_match_all('/\$\d/', $element->getSource(), $sourceArgs);
       preg_match_all('/\$\d/', $element->getTarget(), $targetArgs);
+      //TODO Document arg order
       //TODO Raise error if source args are not in numerical order!
       $sourceParts = preg_split('/\$\d/', $element->getSource());
       $startChar = $this->getFirstCharOfPart($sourceParts[0]);
@@ -58,8 +59,8 @@ class MarkupTranslator implements MarkupTranslatorInterface {
       if(count($sourceParts) == count($targetParts) > 1) {
         $argNum = count($sourceParts) - 1;
         for ($i = 0; $i < $argNum; $i++) {
-          //Start of the source pattern is not allowed inside the pattern
           //TODO Document this!
+          //Start of the source pattern is not allowed inside the pattern
           $sourcePattern .= $sourceParts[$i].'([^'.$startChar.']*?)';
           $targetPattern .= $targetParts[$i].$targetArgs[0][$i];
         }

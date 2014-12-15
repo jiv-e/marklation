@@ -1,10 +1,10 @@
 <?php
-#
-# Markup Translator
-# Copyright (c) 2014 Juho Viitasalo
-#
+/**
+ * Marklation - Markup translator and dictionary standard
+ * Copyright (c) 2014 Juho Viitasalo
+ */
 
-namespace MarkupTranslator;
+namespace Marklation;
 
 
 interface MarkupTranslatorInterface {

@@ -16,7 +16,7 @@
 
   "autoload": {
     "psr-4": {
-      "MarkupTranslator\\": "src/MarkupTranslator/",
+      "Marklation\\": "src/Marklation/",
       "Tests\\": "tests/"
     }
   }

@@ -1,15 +1,15 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: jiv
- * Date: 22/10/14
- * Time: 10:28
+ * Marklation - Markup translator and dictionary standard
+ * Copyright (c) 2014 Juho Viitasalo
+ *
+ * Some utility functions.
  */
 
-namespace MarkupTranslator;
+namespace Marklation;
 
 
-class MarkupUtilities {
+class Utilities {
   public static function sanitize($string) {
     $escapeTable = array(
       '*' => '\*',
@@ -23,16 +23,16 @@ class MarkupUtilities {
   }
 
   public static function encodeEscapes($string) {
-    //$encodedChar = MarkupUtilities::strToHex($charToEncode);
+    //$encodedChar = Utilities::strToHex($charToEncode);
     $encodedString = preg_replace_callback('/\\\\(.)/', function($matches) {
-      return '0x'.MarkupUtilities::strToHex($matches[1]);
+      return '0x'.Utilities::strToHex($matches[1]);
     }, $string);
     return $encodedString;
   }
 
   public static function decodeEscapes($string) {
     $decodedString = preg_replace_callback('/0x([0-9A-F]{2})/', function($matches) {
-      return MarkupUtilities::hexToStr($matches[1]);
+      return Utilities::hexToStr($matches[1]);
     }, $string);
     return $decodedString;
   }

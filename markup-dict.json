@@ -1,5 +1,0 @@
-{"markup-dict": [
-    {"source": "_$1_", "dest": "<em>$1</em>" },
-    {"source": "*$1*", "dest": "<strong>$1</strong>" },
-  ]
-}

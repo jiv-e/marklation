@@ -1,12 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: jiv
- * Date: 21/10/14
- * Time: 15:44
+ * Marklation - Markup translator and dictionary standard
+ * Copyright (c) 2014 Juho Viitasalo
  */
 
-namespace MarkupTranslator;
+namespace Marklation;
 
 
 class MarkupElementCollection implements \IteratorAggregate {

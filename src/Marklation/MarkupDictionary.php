@@ -1,12 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: jiv
- * Date: 20/10/14
- * Time: 22:22
+ * Marklation - Markup translator and dictionary standard
+ * Copyright (c) 2014 Juho Viitasalo
  */
 
-namespace MarkupTranslator;
+namespace Marklation;
 
 use Traversable;
 use Underscore\Types\Arrays;
@@ -41,6 +39,7 @@ class MarkupDictionary implements \IteratorAggregate {
   }
 
   public function __construct($path) {
+    $test = file_get_contents($path);
     $this->rawData = json_decode(file_get_contents($path));
     $this->elements = $this->createElements($this->rawData);
     $this->elementTree = $this->buildElementCollection($this->elements);

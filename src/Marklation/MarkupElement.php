@@ -1,12 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: jiv
- * Date: 21/10/14
- * Time: 00:07
+ * Marklation - Markup translator and dictionary standard
+ * Copyright (c) 2014 Juho Viitasalo
  */
 
-namespace MarkupTranslator;
+namespace Marklation;
 
 class MarkupElement {
 
@@ -28,7 +26,7 @@ class MarkupElement {
 
   function __construct($id, $source, $target, $extends = NULL) {
     $this->id = $id;
-    $this->source = MarkupUtilities::sanitize($source);
+    $this->source = Utilities::sanitize($source);
     $this->target = $target;
     $this->extends = $extends;
 

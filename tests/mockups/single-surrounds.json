@@ -6,6 +6,9 @@
   {"id": "link",          "source": "[$1]($2)",   "target": "<a href=\"$2\">$1</a>"},
   {"id": "linkWithTitle", "source": "[$1]($2 \"$3\")",   "target": "<a href=\"$2\" title=\"$3\">$1</a>", "extends": "link"},
   {"id": "image", "source": "![$1]($2)",   "target": "<img src=\"$2\" alt=\"$1\"/>", "extends": "link"},
-  {"id": "imageWithTitle", "source": "![$1]($2 \"$3\")",   "target": "<img src=\"$2\" alt=\"$1\" title=\"$3\"/>", "extends": "linkWithTitle"}
+  {"id": "imageWithTitle", "source": "![$1]($2 \"$3\")",   "target": "<img src=\"$2\" alt=\"$1\" title=\"$3\"/>", "extends": "linkWithTitle"},
+  {"id": "ol", "source": "$listItem", "target": "<ul>$1</ul>"},
+  {"id": "listItem", "source": "- $1\n", "target": "<li>$1</li>", "parent": "ol"}
 ]
 }
+

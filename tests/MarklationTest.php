@@ -1,15 +1,13 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: jiv
- * Date: 18/10/14
- * Time: 22:37
+ * Marklation - Markup translator and dictionary standard
+ * Copyright (c) 2014 Juho Viitasalo
  */
 
 namespace Tests;
 
-use MarkupTranslator\MarkupTranslator;
-use MarkupTranslator\MarkupDictionary;
+use Marklation\MarkupTranslator;
+use Marklation\MarkupDictionary;
 
 class MarkupTranslatorTest extends \PHPUnit_Framework_TestCase {
   public function testTranslate()

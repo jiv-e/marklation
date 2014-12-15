@@ -1,12 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: jiv
- * Date: 18/10/14
- * Time: 22:12
+ * Marklation - Markup translator and dictionary standard
+ * Copyright (c) 2014 Juho Viitasalo
  */
 
-namespace MarkupTranslator;
+namespace Marklation;
 
 
 class MarkupTranslator implements MarkupTranslatorInterface {
@@ -44,7 +42,7 @@ class MarkupTranslator implements MarkupTranslatorInterface {
   }
 
   protected function replaceSingleSurrounds($text) {
-    $parsedText = MarkupUtilities::encodeEscapes($text);
+    $parsedText = Utilities::encodeEscapes($text);
     //Element order ensures that extended elements are rendered first
     foreach ($this->getDictionary()->getOrderedElements() as $element) {
       $sourcePattern = '/';
@@ -70,7 +68,7 @@ class MarkupTranslator implements MarkupTranslatorInterface {
       }
     }
 
-    $parsedText = MarkupUtilities::decodeEscapes($parsedText);
+    $parsedText = Utilities::decodeEscapes($parsedText);
     return $parsedText;
   }
 

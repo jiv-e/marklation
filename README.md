@@ -1,4 +1,4 @@
-# Marklation - Markup translater and dictionary standard
+# Marklation - Markup translator and dictionary standard
  
 Marklation offers an easy way to write your own markup syntax using JSON. The goal is to offer a single source of markup translation rules that can be used by different programming languages. Marklation aims also to provide test framework for implementing the Marklation correctly in different languages.
  
